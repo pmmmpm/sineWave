@@ -1,8 +1,14 @@
+let cnv;
+
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	ellipse(100, 145, 50, 100);
+	cnv = createCanvas(innerWidth, innerHeight);
+	cnv.parent('p5Sketch')
 }
 
 function draw() {
+	background(51);
+}
 
+function windowResized(){
+	resizeCanvas(innerWidth, innerHeight);
 }
