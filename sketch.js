@@ -1,6 +1,6 @@
 let cnv;
-let radius = 20;
-let vertices = 3;
+// let radius = 20;
+// let vertices = 3;
 
 function setup() {
 	cnv = createCanvas(innerWidth, innerHeight);
@@ -10,12 +10,14 @@ function setup() {
 function draw() {
 	background(51);
 	
-	let value = document.getElementById('vertices').value;
-	// console.log(value);
-	vertices = value;
+	let vervalue = document.getElementById('vertices').value;
+	let radvalue = document.getElementById('radius').value;
+	vertices = vervalue;
+	radius = radvalue;
 	for(let i = 0; i < 10; i++ ){
 		polygon(vertices, radius * i, width/2, height/2);
 	}
+	
 
 }
 
