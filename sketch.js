@@ -7,6 +7,7 @@ let wave = 0;
 let waveHeight = 20;
 let waveFreq = 0;
 let period = 2;
+// let polygonNum = 20;
 
 function setup() {
 	cnv = createCanvas(innerWidth, innerHeight);
@@ -19,12 +20,16 @@ function draw() {
 	
 	let vervalue = document.getElementById('vertices').value;
 	let radvalue = document.getElementById('radius').value;
+	polygonNum = document.getElementById('number').value;
+	waveHeight = document.getElementById('height').value;
+	waveFreq = document.getElementById('frequency').value;
+
 	// strovalue = document.getElementById('strokeWeight').value;
 	vertices = vervalue;
 	radius = radvalue;
 	// console.log(strovalue);
-	for(let i = 0; i < 10; i++ ){
-		waveFreq = map(i,0, 10, 0, TWO_PI * period);
+	for(let i = 0; i < polygonNum; i++ ){
+		waveFreq = map(i,0, polygonNum, 0, TWO_PI * period);
 		let y = (height/2) + (sin(wave+waveFreq) * waveHeight);
 		polygon(vertices, radius * i, width/2, y);
 	}
@@ -34,15 +39,15 @@ function draw() {
 }
 
 function polygon(vert, r, posX ,posY){
-	beginShape();
+	beginShape(POINTS);
 	noFill();
 	stroke(255,204,229);
 	// strokeWeight(strovalue);
-	strokeWeight((sin(wave+waveFreq) * waveHeight)*1);
+	strokeWeight(((sin(wave+waveFreq) * waveHeight)+10)*3);
 	for(let i = 0; i < vert; i++){
 		let angle = map(i, 0 , vert, 0, TWO_PI);
 		let x = cos(angle) * r + posX;
-		let y = sin(angle) * (r/2) + posY;
+		let y = sin(angle) * (r) + posY;
 		vertex(x, y);
 	}
 	endShape(CLOSE);
